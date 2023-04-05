@@ -1,8 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { useForm } from "../../hooks/useForm";
+import { AuthContext } from "../../contexts/AuthContext";
 
 
 export const Register = () => {
 
+    const { onRegisterSubmit } = useContext(AuthContext);
+    const { values, changeHandler, onSubmit } = useForm({
+        email: '',
+        password: '',
+        username: '',
+        confirmPassword: '',
+        gender: '',
+    }, onRegisterSubmit);
 
 
     return (
@@ -14,25 +26,74 @@ export const Register = () => {
 
             <div className="tabs-content">
                 <div id="signup-tab-content" className="active">
-                    <form className="signup-form" action="" method="post">
-                        <input type="email" className="input" id="user_email" autocomplete="off" placeholder="Email" />
-                        <input type="text" className="input" id="user_name" autocomplete="off" placeholder="Username" />
-                        <input type="password" className="input" id="user_pass" autocomplete="off" placeholder="Password" />
-                        <input type="password" className="input" id="user_pass" autocomplete="off" placeholder="Confirm password" />
+                    <form className="signup-form" action="" method="post" onSubmit={onSubmit}>
+                        <input type="email"
+                            className="input"
+                            id="email"
+                            name="email"
+                            autoComplete="off"
+                            placeholder="Email"
+                            value={values.email}
+                            onChange={changeHandler}
+                        />
+
+                        <input type="text"
+                            className="input"
+                            id="username"
+                            name="username"
+                            autoComplete="off"
+                            placeholder="Username"
+                            value={values.username}
+                            onChange={changeHandler}
+                        />
+                        <input type="password" 
+                        className="input" 
+                        id="register-password"
+                        name="password"
+                        autoComplete="off" 
+                        placeholder="Password" 
+                        value={values.password}
+                        onChange={changeHandler}
+                        />
+                        <input type="password" 
+                        className="input" 
+                        id="confirm-password"
+                        name="confirmPassword"
+                        autoComplete="off" 
+                        placeholder="Confirm Password" 
+                        value={values.confirmPassword}
+                        onChange={changeHandler}
+                        />
 
 
-                        <div class="gender">
+                        <div className="gender">
                             <div className="gender-item">
-                                <input type="radio" value="None" id="male" name="gender" />
-                                <label htmlFor="male" className="radio" chec>Male</label>
+                                <input type="radio" 
+                                id="male" 
+                                name="gender" 
+                                value={values.gender}
+                                onChange={changeHandler}
+                                />
+                                <label htmlFor="male" className="radio" >Male</label>
                             </div>
-                            <div class="gender-item">
-                                <input type="radio" value="None" id="female" name="gender" />
+                            <div className="gender-item">
+                                <input type="radio" 
+                                id="female" 
+                                name="gender"
+                                value={values.gender}
+                                onChange={changeHandler}
+                                />
                                 <label htmlFor="female" className="radio">Female</label>
                             </div>
-                            <div class="gender-item">
-                                <input type="radio" value="None" id="other" name="gender" checked />
-                                <label htmlFor="other" className="radio">Other</label>
+                            <div className="gender-item">
+                                <input type="radio" 
+                                id="other" 
+                                name="gender"
+                                value={values.gender}
+                                onChange={changeHandler}               
+                                defaultChecked 
+                                />
+                                <label htmlFor="other" className="radio" >Other</label>
                             </div>
                         </div>
 
@@ -44,7 +105,7 @@ export const Register = () => {
                     </div>
                     <hr></hr>
                     <div className="help-text">
-                        <p><a href="/login">You already have an account?</a></p>
+                        <p><Link to="/login">You already have an account? </Link></p>
                     </div>
                 </div>
 
@@ -57,88 +118,3 @@ export const Register = () => {
 };
 
 
-{/* <section className="vh-100" style={{ backgroundColor: "#eee" }}>
-<div className="container h-100">
-    <div className="row d-flex justify-content-center align-items-center h-100">
-        <div className="col-lg-12 col-xl-11">
-            <div className="card text-black" style={{ borderRadius: "25px" }}>
-                <div className="card-body p-md-5">
-                    <div className="row justify-content-center">
-                        <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                            <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</p>
-
-                            <form className="mx-1 mx-md-4">
-
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <input type="text" id="form3Example1c" className="form-control" />
-                                        <label className="form-label" htmlFor="form3Example1c">Your Name</label>
-                                    </div>
-                                </div>
-
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <input type="email" id="form3Example3c" className="form-control" />
-                                        <label className="form-label" htmlFor="form3Example3c">Your Email</label>
-                                    </div>
-                                </div>
-
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <input type="password" id="form3Example4c" className="form-control" />
-                                        <label className="form-label" htmlFor="form3Example4c">Password</label>
-                                    </div>
-                                </div>
-
-                                <div className="d-flex flex-row align-items-center mb-4">
-                                    <i className="fas fa-key fa-lg me-3 fa-fw"></i>
-                                    <div className="form-outline flex-fill mb-0">
-                                        <input type="password"
-                                            id="bb"
-                                            className="form-control"
-                                        />
-
-
-
-                                        <label className="form-label" htmlFor="form3Example4cd">Repeat your password</label>
-                                    </div>
-
-                                </div>
-
-                                <div className="form-check d-flex justify-content-center mb-5">
-                                    <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                                    <label className="form-check-label" htmlFor="form2Example3">
-                                        I agree all statements in <a href="https://www.legalnature.com/guides/why-your-website-needs-a-strong-terms-of-use-agreement-and-what-to-include#what-is-a-terms-of-use">Terms of service</a>
-                                    </label>
-                                </div>
-
-                                <div className="form-check d-flex justify-content-center mb-5">
-                                    <label className="form-check-label" htmlFor="form2Example3">
-                                        You are already registrated? <Link to="/login">Click here</Link>
-                                    </label>
-                                </div>
-
-                                <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                    <button type="button" className="get-started-btn scrollto">Register</button>
-                                </div>
-
-                            </form>
-
-                        </div>
-                        <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                            <img src="/assets/img/car_drawing_register.jpg"
-                                className="img-fluid" alt="Sample image" />
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section> */}

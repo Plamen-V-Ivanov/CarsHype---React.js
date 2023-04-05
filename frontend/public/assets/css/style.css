@@ -2189,3 +2189,11 @@ article .car-section {
   float: right;
   /* margin-right: 50px; */
 }
+
+/* username styling */
+
+.username{
+  color: #fff;
+  font-size: 18px;
+  margin-right: 20px;
+}

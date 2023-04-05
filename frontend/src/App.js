@@ -21,51 +21,56 @@ import { TunedCarDetails } from './components/TunedCars/TunedCarDetails';
 import { Articles } from './components/Articles/Articles';
 import { CreateTunedCar } from './components/TunedCars/CreateTunedCar';
 
+import { AuthProvider } from './contexts/AuthContext';
+import { ArticleProvider } from './contexts/ArticleContext';
+
 function App() {
     return (
-        <>
 
-            <BrowserRouter>
+        <BrowserRouter>
 
-                <Header />
-                {/* <Main /> */}
+            <AuthProvider>
+                <ArticleProvider>
 
-                <main id="main">
-                    <Routes>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/about' element={<About />} />
-                        <Route path='/contact' element={<Contact />} />
+                    <Header />
+                    {/* <Main /> */}
 
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/logout' element={<Logout />} />
-                        {/* <Route path='/profile/:gameId' element={<Profile />} /> */}
-                        <Route path='/profile' element={<Profile />} />
-                        
-                        <Route path="/articles" element={<Articles />}/>
-                        <Route path="/create-article" element={<CreateArticle />}/>
+                    <main id="main">
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path='/about' element={<About />} />
+                            <Route path='/contact' element={<Contact />} />
 
-                        {/* <Route path='/create' element={<Create />} />
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/register' element={<Register />} />
+                            <Route path='/logout' element={<Logout />} />
+                            {/* <Route path='/profile/:gameId' element={<Profile />} /> */}
+                            <Route path='/profile' element={<Profile />} />
+
+                            <Route path="/articles" element={<Articles />} />
+                            <Route path="/create-article" element={<CreateArticle />} />
+
+                            {/* <Route path='/create' element={<Create />} />
                         <Route path='/articles/create/' element={<CreateArticle />} /> */}
 
-                        {/* <Route path="/articles" element={<Articles />} >
+                            {/* <Route path="/articles" element={<Articles />} >
                             <Route path="/articles/create" element={<CreateArticle />} />
                         </Route> */}
 
-                        {/* <Route path='/create/article' element={<CreateArticle />} />
+                            {/* <Route path='/create/article' element={<CreateArticle />} />
                         <Route path='/create/tunedcar' element={<CreateArticle />} /> */}
 
 
-                        <Route path='/tunedcars' element={<TunedCars />} />
-                        <Route path='/tunedcar' element={<TunedCarDetails />} />
-                        <Route path='/create-tunedcar' element={<CreateTunedCar />} />
+                            <Route path='/tunedcars' element={<TunedCars />} />
+                            <Route path='/tunedcar' element={<TunedCarDetails />} />
+                            <Route path='/create-tunedcar' element={<CreateTunedCar />} />
 
 
 
-                        {/* <Route path='/articles' element={<Articles />} /> */}
+                            {/* <Route path='/articles' element={<Articles />} /> */}
 
 
-                        {/* <Route element={<RouteGuard />}>
+                            {/* <Route element={<RouteGuard />}>
                         <Route path='/catalog/:gameId/edit' element={
                             <GameOwner>
                                 <EditGame />
@@ -77,20 +82,25 @@ function App() {
                     </Route> */}
 
 
-                        {/* <Route path='/create-game' element={
+                            {/* <Route path='/create-game' element={
                             <RouteGuard>
                                 <CreateGame onCreateGameSubmit={onCreateGameSubmit} />
                             </RouteGuard>
                         } /> */}
-                    </Routes>
+                        </Routes>
 
 
-                </main>
+                    </main>
 
-                <Footer />
-            </BrowserRouter>
+                    <Footer />
 
-        </>
+                </ArticleProvider>
+
+            </AuthProvider>
+
+        </BrowserRouter>
+
+
 
     );
 }
